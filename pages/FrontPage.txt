@@ -1,0 +1,26 @@
+FrontPage
+1452046121 Anonymous
+This is the front page of the wiki. Its format is roughly based
+on WikiWiki by C2. 
+
+It supports:
+* lists, _italics_, __bold__ via MarkDown
+* AnonyMous editing
+* CamelCase for internal linking
+* Link coloring
+* Page backups and changelogs
+
+It will support:
+* searching the list of page titles
+* a "recent changes" page
+* IP logs
+
+Try viewing the pages on AnonyMous or ThisWiki, or make an article of your own, by following a dead link, creating a link to a non-existing page, or by modifying the URL field.
+
+Want to [create a page](?m=create)? 
+
+You can [view all pages](?m=link), or view all categories at CategoryCategory, too.
+
+----
+
+CategoryMeta

@@ -1,0 +1,9 @@
+<h3>{0}: {1}</h3><title>{0}: {1}</title>
+<form method='post' action='.'>
+  Name: <input type='text' name='n' default='Anonymous' value='{3}'>
+  <input type='submit' value='Preview'>
+  <input type='hidden' name='m' value='{0}'>
+  <input type='hidden' name='p' value='{1}'>
+  <p>
+  <textarea name='article' style='width:60%;height:40%'>{2}</textarea>
+</form>
