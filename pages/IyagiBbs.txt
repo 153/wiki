@@ -1,0 +1,8 @@
+IyagiBbs
+1451886620 Anonymous
+Iyagi is a TextBoard written by FourByThirteen, hosted at http://4x13.net/misc/bbs/ (source: http://github.com/153/iyagi-bbs)  The name means "chat" or "story" in Korean.
+
+It's PublicDomain and allows for Anonymous posting, which is pretty cool. Unlike KareHa, it has stickies, and is slightly more mobile friendly. If anyone would like to contribute -- themes, especially, would be nice, or your takes on the patterns used -- feel free to speak! 
+
+----
+CategorySoftware CategoryWebsites FourByThirteen

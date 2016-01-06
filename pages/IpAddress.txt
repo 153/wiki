@@ -1,0 +1,5 @@
+IpAddress
+1451873133 Anonymous
+An IP address is a computer"s (usually a router"s) InterNet address at a given time. IPv4 addresses come in the format ###.###.###.###, from 0.0.0.0 -- 255.255.255.255. Most computers only have one IP address, and most IP addresses refer to a single computer at a point in time. For this reason, they provide the closest thing to an identity when users are otherwise AnonyMous. 
+
+Most consumers have dynamic IPs, meaning that their IP address can change. However, the ISP which connects people to the InterNet generally stores the MacAddress associated with a given IP, so you are not anonymous to them, even if your public internet address changes. 
