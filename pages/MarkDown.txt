@@ -1,5 +1,5 @@
 MarkDown
-1452044321 admin
+1452109761 Anonymous
 Markdown is a cool formatting language that's simpler and more intuitive than HTML and BBcode. ThisWiki, along with sites like GitHub and http://reddit.com/, use Markdown so that plain text editing is an attractive alternative to WYSIWYG editors. We have our own Markdown renderer powered by Mistune in Python. 
 
 Blessed book in the cult of MarkDown: 

@@ -1,5 +1,10 @@
 FrontPage
-1452046121 Anonymous
+1452253587 Anonymous
+----
+[view all](?m=link) | [recent changes](?m=rec) | [create new](?m=create)
+
+----
+
 This is the front page of the wiki. Its format is roughly based
 on WikiWiki by C2. 
 
@@ -9,11 +14,8 @@ It supports:
 * CamelCase for internal linking
 * Link coloring
 * Page backups and changelogs
-
-It will support:
-* searching the list of page titles
-* a "recent changes" page
-* IP logs
+* **New** IP logging added
+* **New** recent changes added
 
 Try viewing the pages on AnonyMous or ThisWiki, or make an article of your own, by following a dead link, creating a link to a non-existing page, or by modifying the URL field.
 

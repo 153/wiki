@@ -8,6 +8,8 @@ markdown = mistune.Markdown()
 
 w_conf = {"pages":"./pages/", \
           "links":"./pages/links.txt", \
+          "ips":"./ips.txt", \
+          "rec":20, \
           "url":"/wiki/"} # change me as needed
 
 def main():
@@ -27,7 +29,7 @@ h1, h2, h3, h4 {
 
 </style>""")
     print("<body>")
-    cgi_modes = ["edit", "create", "view", "hist", "link"]
+    cgi_modes = ["edit", "create", "view", "hist", "link", "rec"]
     do_mode = form.getvalue('m')
     if not do_mode:
         w_view("FrontPage")
@@ -42,7 +44,7 @@ h1, h2, h3, h4 {
             print("<a href='{0}'>&lt; &lt; home</a>".format(w_conf['url']))
             if do_mode not in ["view", "create"]:
                 print("| <a href='{1}?m=view;p={0}'>&lt; back</a>".format(w_page, w_conf['url']))
-        elif do_mode in ["link", "hist", "create"]:
+        elif do_mode in ["link", "hist", "create", "rec"]:
             print("<a href='{0}'>&lt; &lt; home</a>".format(w_conf['url']))
             
         if do_mode == "view":
@@ -55,6 +57,8 @@ h1, h2, h3, h4 {
             w_links(w_page)
         elif do_mode == "hist":
             w_hist(w_page)
+        elif do_mode == 'rec':
+            w_rec(w_page)
 
 def w_view(p=''):
     if p:
@@ -150,7 +154,7 @@ def w_publish(p='', n='', sb='', art=''):
     print("<p>", form.getvalue('sb'), "<br>", form.getvalue('p'), \
           "<br>")
     p = cgi.escape(form.getvalue('p')).replace('.', 'o').replace('/', 'l')
-    art = form.getvalue('article')
+    art = cgi.escape(form.getvalue('article'))
     meta = cgi.escape(form.getvalue('sb')) + " " + cgi.escape(form.getvalue('n'))
     if os.path.isfile(w_conf['pages'] + p + ".txt"):
         bckup = w_conf['pages'] + w_hist(p, 1)
@@ -160,6 +164,10 @@ def w_publish(p='', n='', sb='', art=''):
         page = "\n".join([p, meta, art])
         wp.write(page)
         print("Page", p, "written!")
+    with open(w_conf['ips'], "a") as ipl:
+        ip = os.environ["REMOTE_ADDR"]
+        ip = "|".join([ip, p, meta+"\n"])
+        ipl.write(ip)
     link_list = []
     with open(w_conf['links'], 'r+') as w_links:
         w_ll = w_links.read().splitlines()
@@ -185,6 +193,29 @@ def w_publish(p='', n='', sb='', art=''):
         w_links.seek(0)
         w_links.write("\n".join(link_list))
         w_links.truncate()
+        
+def w_rec(p=0):
+    if not p:
+        p = 0
+    fir_num = int(p)
+    sec_num = p + w_conf['rec']
+    print("<hr>")
+    edits = []
+    with open(w_conf['ips'], 'r') as ips:
+        ips = ips.read().splitlines()
+        for ip in ips:
+            ip = ip.split("|")
+            ip.append(ip[2].split(" ")[1])
+            ip[2] = ip[2].split(" ")[0]
+                # [2] page, [3] time, [4] name
+            edits.append(ip[1:])
+    edits.reverse()
+    print("<ul>")
+    for n, ip in enumerate(edits):
+        ip[1] = time.localtime(int(ip[1]))
+        ip[1] = time.strftime('%y.%m.%d %H:%M', ip[1])
+        print("<li>[{1}]: <a href='?m=view;p={0}'>{0}</a>, {2}".format(*ip))
+    print("</ul>")
 
 def do_edit(p='', e_m=''):
     if form.getvalue('sb'):

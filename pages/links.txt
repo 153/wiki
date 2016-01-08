@@ -1,7 +1,7 @@
 TextBoard:FourByThirteen ThisWiki TextBoard IyagiBbs KareHa SageruOrg AnonyMous ImageBoard TableCat InternetRelayChat SaOvq
-CategoryMeta:FourByThirteen ThisWiki FrontPage WikiWiki CamelCase MarkDown SandBox
-ThisWiki:FourByThirteen CamelCase AnonyMous CategoryMeta FrontPage MarkDown WikiWiki CategorySoftware CategoryWebsites
-CategorySoftware:FourByThirteen ThisWiki TextBoard IyagiBbs ImageBoard MarkDown WikiWiki TableCat HackerNews KareHa InternetRelayChat GnuLinux WebLog PublicDomain
+CategoryMeta:FourByThirteen ThisWiki FrontPage WikiWiki CamelCase MarkDown SandBox CategoryCategory IpAddress
+ThisWiki:FourByThirteen CamelCase AnonyMous CategoryMeta FrontPage MarkDown WikiWiki CategorySoftware CategoryWebsites IpAddress
+CategorySoftware:FourByThirteen ThisWiki TextBoard IyagiBbs ImageBoard MarkDown WikiWiki TableCat HackerNews KareHa InternetRelayChat GnuLinux WebLog PublicDomain GitHub CategoryCategory
 IyagiBbs:FourByThirteen TextBoard CategorySoftware KareHa CategoryWebsites
 AnonyMous:IpAddress ThisWiki KareHa ImageBoard FrontPage FourChan InternetRelayChat MeltingWax AnonyMous CategoryPeople SaOvq
 WikiWiki:ThisWiki FrontPage CategoryWebsites WikiWiki TableCat PortlandOregon
@@ -9,23 +9,24 @@ FourByThirteen:ThisWiki TextBoard IyagiBbs CategoryWebsites KareHa FourByThirtee
 CamelCase:ThisWiki FrontPage WikiWiki
 SageruOrg:TextBoard CategoryWebsites KareHa AnonyMous InternetRelayChat MeltingWax
 KareHa:TextBoard SageruOrg CamelCase CategorySoftware IyagiBbs InternetRelayChat
-FrontPage:AnonyMous
-IpAddress:AnonyMous
+FrontPage:AnonyMous CategoryCategory
+IpAddress:AnonyMous IpAddress
 ImageBoard:AnonyMous FourChan KareHa
-CategoryWebsites:WikiWiki IyagiBbs TableCat FourChan ThisWiki HackerNews FourByThirteen SageruOrg InternetRelayChat WebLog SaOvq
+CategoryWebsites:WikiWiki IyagiBbs TableCat FourChan ThisWiki HackerNews FourByThirteen SageruOrg InternetRelayChat WebLog SaOvq CategoryCategory
 TableCat:TextBoard CategoryWebsites KareHa CategoryPeople
 FourChan:ImageBoard CategoryWebsites AnonyMous
 HackerNews:CategoryWebsites
-CategoryPhilosophy:MetaPhysics LogicalThinking InternetRelayChat PhilosophyQuotes PublicDomain
+CategoryPhilosophy:MetaPhysics LogicalThinking InternetRelayChat PhilosophyQuotes PublicDomain CategoryCategory
 PublicDomain:FourByThirteen IyagiBbs KareHa ThisWiki WebLog
 MetaPhysics:CategoryPhilosophy
-CategoryCategory:CategoryMeta CategoryPhilosophy CategoryWebsites CategorySoftware CategoryPeople FrontPage
+CategoryCategory:CategoryMeta CategoryPhilosophy CategoryWebsites CategorySoftware CategoryPeople FrontPage IpAddress CategoryPlaces
 LogicalThinking:CategoryPhilosophy
-CategoryPeople:AnonyMous MeltingWax TableCat FourByThirteen
+CategoryPeople:AnonyMous MeltingWax TableCat FourByThirteen CategoryCategory
 InternetRelayChat:MeltingWax
 MeltingWax:SageruOrg CategoryPeople TextBoard
 GnuLinux:CategorySoftware PortlandOregon GnuLinux
-MarkDown:ThisWiki MarkDown FrontPage
+MarkDown:ThisWiki MarkDown FrontPage CategorySoftware
 WebLog:FourByThirteen WebLog
 PortlandOregon:GnuLinux
 PhilosophyQuotes:CategoryPhilosophy
+GitHub:MarkDown CategorySoftware
