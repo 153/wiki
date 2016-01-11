@@ -2,6 +2,8 @@
 
 import os, cgi, shutil
 import time, re, mistune
+import cgitb
+cgitb.enable()
 
 form = cgi.FieldStorage()
 markdown = mistune.Markdown()
@@ -9,7 +11,6 @@ markdown = mistune.Markdown()
 w_conf = {"pages":"./pages/", \
           "links":"./pages/links.txt", \
           "ips":"./ips.txt", \
-          "rec":20, \
           "url":"/wiki/"} # change me as needed
 
 def main():
@@ -20,6 +21,7 @@ def main():
 body {font-size: 1em;
 line-height: 1.44;
 max-width: 700px;
+background-color: #f4f4f4;
 font-weight:400;}
 img {max-width:100%}
 p {margin-bottom: 1.3em;}
@@ -85,7 +87,7 @@ def w_view(p=''):
                 for link in set(list(n_links)):
                     links2 = link + "<a style='color:#d84' href='?m=create;p=" + link + "'>X</a>"
                     w_body = w_body.replace(link, links2)
-                w_body = w_body.replace("</a>'", "</a>")
+                w_body = w_body.replace("</a>'", "</a>").replace('&gt;', '>')
                 if w_title != "<h3>404</h3>":
                     w_body = markdown(w_body)
                 print(w_title, w_body)
@@ -109,20 +111,21 @@ def w_hist(p='', np=0):
         hists = []
         print("<hr>")
         for link in links:
-            if p+"." not in link:
+            if p+"." not in link or p == "link":
                 continue
-            if re.match(r"([A-Z][a-z]+){2,}", p):
-                with open(w_conf['pages'] + link) as page:
-                    page = page.read().splitlines()
-                    wc = len(" ".join(page[2:]).split(" "))
-                    page = page[1].split(' ')
-                    d_string = '%y.%m.%d %H:%M'
-                    page[0] = time.localtime(int(page[0]))
-                    page[0] = time.strftime(d_string, page[0])
-                    hists.append([link, page, wc])
+            with open(w_conf['pages'] + link) as page:
+                page = page.read().splitlines()
+                wc = len(" ".join(page[2:]).split(" "))
+                page = page[1].split(' ')
+                d_string = '%y.%m.%d %H:%M'
+                page[0] = time.localtime(int(page[0]))
+                page[0] = time.strftime(d_string, page[0])
+                hists.append([link, page, wc])
         if np is 1:
             return str(p+'.txt.'+ str(len(hists)))
-            
+        if len(hists) == 0:
+            print("Page does not exist.")
+            return
         print(len(hists), "copies of", p, "on disk:<br>")
         lwc = 0
         nwc = ''
@@ -132,6 +135,8 @@ def w_hist(p='', np=0):
                 nwc = "+" + str(i[2]-lwc)
             elif i[2] < lwc:
                 nwc = "-" + str(lwc-i[2])
+            else:
+                nwc = "+0"
             lwc = int(i[2])
             print("<br> @", i[1][0], "by", i[1][1])
             print("["+str(lwc)+"w // "+nwc+"w]")
@@ -139,9 +144,9 @@ def w_hist(p='', np=0):
 def w_create(p=''):
     if not p:
         print("<hr>Before creating a page, ask yourself whether",
-              "it would be a good fit for this wiki. Type the",
+              "it would be a good fit for this wiki.<p><b>Type the",
               "name in CamelCase with no digits or special",
-              "characters.")
+              "characters.</b>")
         print("<p><form action='.' method='post'>")
         print("<input type='hidden' name='m' value='create'>")
         print("<input type='text' name='p'>")
@@ -198,7 +203,6 @@ def w_rec(p=0):
     if not p:
         p = 0
     fir_num = int(p)
-    sec_num = p + w_conf['rec']
     print("<hr>")
     edits = []
     with open(w_conf['ips'], 'r') as ips:
@@ -231,76 +235,73 @@ def do_edit(p='', e_m=''):
             with open(page_loc) as art:
                 art = art.read().splitlines()
                 by = art[1].split(" ")
-                art = "\n".join(art[2:]).replace("&#39;", "'")
+                art = "\n".join(art[2:]).replace("&#39;", "'").replace("&gt;", ">")
             print("last edited at")
             d_string = '%Y-%m-%d [%a] %H:%M'
             by[0] = time.localtime(int(by[0]))
             by[0] = time.strftime(d_string, by[0])
             print(by[0], "by", by[1], "<br>")
         if form.getvalue('article'):
-            art = form.getvalue('article').replace("&#39;", "'")
-        if 1:
-            if form.getvalue('n'):
-                p_name = cgi.escape(form.getvalue('n')).strip()
-                if not p_name[0].isalpha() or p_name == 'Anonymous':
-                    p_name2 = 'AnonymousUser'
-                else:
-                    p_name2 = "User" + p_name.capitalize()
-            else:
-                p_name = 'Anonymous'
+            art = form.getvalue('article').replace("&#39;", "'").replace("&gt;", ">")
+        if form.getvalue('n'):
+            p_name = cgi.escape(form.getvalue('n')).strip()
+            if not p_name[0].isalpha() or p_name == 'Anonymous':
                 p_name2 = 'AnonymousUser'
-            print("// You are:", p_name2)
-            print("// Time:")
-            d_string = '%Y-%m-%d [%a] %H:%M'
-            e_utime = int(time.time())
-            e_ltime = time.localtime(e_utime)
-            e_ltime = time.strftime(d_string, e_ltime)
-            print(e_ltime, "<hr>")
-            p_art = cgi.escape(art)
-            w_links = []
-            w_links2 = []
-            for m in re.finditer(r"\b([A-Z][a-z]+){2,}\b", p_art):
-                if not set(m.group()) & set(w_links):
-                    if os.path.isfile(w_conf['pages'] + m.group() + ".txt"):
-                        w_links.append(m.group())
-                    else:
-                        w_links2.append(m.group())
-            w_links = list(set(w_links))
-            w_links2 = list(set(w_links2))
-            p_art2 = p_art
-            for link in w_links:
-                link2 = "<a style='color:#284' href='?m=view;p=" + link + "'>" + link + "</a>"
-                p_art2 = p_art2.replace(link, link2)
-            for n_link in w_links2:
-                link2 = n_link + "<a style='color:#d84' " \
-                          + "href='?m=create;p=" + n_link +"'>X</a>"
-                p_art2 = p_art2.replace(n_link, link2)
-
+            else:
+                p_name2 = "User" + p_name.capitalize()
+        else:
+            p_name = 'Anonymous'
+            p_name2 = 'AnonymousUser'
+        print("// You are:", p_name2)
+        print("// Time:")
+        d_string = '%Y-%m-%d [%a] %H:%M'
+        e_utime = int(time.time())
+        e_ltime = time.localtime(e_utime)
+        e_ltime = time.strftime(d_string, e_ltime)
+        print(e_ltime)
+        p_art = cgi.escape(art)
+        p_art = p_art
+        w_links = []
+        w_links2 = []
+        for m in re.finditer(r"\b([A-Z][a-z]+){2,}\b", p_art):
+            if not set(m.group()) & set(w_links):
+                if os.path.isfile(w_conf['pages'] + m.group() + ".txt"):
+                    w_links.append(m.group())
+                else:
+                    w_links2.append(m.group())
+        w_links = list(set(w_links))
+        w_links2 = list(set(w_links2))
+        p_art2 = p_art.replace('&gt;', '>')
+        for link in w_links:
+            link2 = "<a style='color:#284' href='?m=view;p=" + link + "'>" + link + "</a>"
+            p_art2 = p_art2.replace(link, link2)
+        for n_link in w_links2:
+            link2 = n_link + "<a style='color:#d84' " \
+                      + "href='?m=create;p=" + n_link +"'>X</a>"
+            p_art2 = p_art2.replace(n_link, link2)
             p_art2 = p_art2.replace("</a>'", "</a>")
-            p_art = p_art.replace("'", '&#39;')
-            p_art2 = p_art2.replace("&#39;", "'").replace('&gt;', '>')
-            if w_links:
-                w_links = " ".join(w_links)
-            print("""<h3><form method='post' action='.'>
-Preview: 
-<input type='submit' value='Publish'>
-<input type='hidden' name='sb' value='{0}'>
+        p_art = p_art.replace("'", '&#39;').replace(">", "&gt;")
+        p_art2 = p_art2.replace("&#39;", "'")
+        if w_links:
+            w_links = " ".join(w_links)
+        if p_art2:
+            print("<hr><h3><form method='post' action='.'> Preview:")
+            print("<input type='submit' value='Publish'>")
+        print("""<input type='hidden' name='sb' value='{0}'>
 <input type='hidden' name='p' value='{1}'>
 <input type='hidden' name='n' value='{2}'>                
 <input type='hidden' name='m' value='{5}'>
 <input type='hidden' name='article' value='{3}'>
 <input type='hidden' name='wl' value='{4}'>
-""".format(e_utime, p, p_name, p_art, w_links, e_m))                
-            print("</form></h3>")
-            print(markdown(p_art2))
-            print("<hr>")
-        else:
-            p_art = ''
-            p_name = ''
+""".format(e_utime, p, p_name, p_art, w_links, e_m))
+        print("</form></h3>")
+        print(markdown(p_art2))
+        print("<hr>")
         with open("edit.html", 'r') as p_create:
             p_create = p_create.read()
             print(p_create.format(e_m, p, p_art, p_name))
-    return
+
+            return
 
 def w_links(p=''):
     if not p:
@@ -311,7 +312,7 @@ def w_links(p=''):
             links.remove(link)
         links.remove('404.txt')
         links.remove('links.txt')
-        print("<hr>", len(links), "pages currently exist on ThisWiki.")
+        print("<hr> Approx.", len(links), "pages currently exist on ThisWiki.")
         print("<ul>")
         for link in links:
             if link[-4:] == '.txt':
