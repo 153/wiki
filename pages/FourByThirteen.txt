@@ -1,14 +1,17 @@
 FourByThirteen
-1451899754 Anonymous
-*Four by Thirteen* is http://4x13.net/ , a site with PublicDomain scripts and a blog about philosophy, software, and the webmaster's life. 
+1452672149 Anonymous
+*Four by Thirteen* is http://4x13.net/, a site with PublicDomain cgi scripts and a blog about philosophy, software, and the webmaster's life. 
 
-You can contact its owner [here](http://4x13.net/me/) or view its source [here](http://github.com/153). 
 
-Software hosted at FourByThirteen:
+Web apps by/at 4x13:
 
 - ThisWiki
 - WebLog
 - IyagiBbs, a TextBoard
+
+You can contact its owner [here](http://4x13.net/me/) or view its sources [here](http://github.com/153). 4x13 lives in PortlandOregon and would like everyone to "keep Portland 82nd".
+
+![](https://i.imgur.com/sM4pwuSm.jpg) ![](https://i.imgur.com/MXrlgyCm.jpg)
 
 ----
 CategoryWebsites CategorySoftware CategoryMeta CategoryPeople

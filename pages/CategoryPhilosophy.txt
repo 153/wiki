@@ -1,8 +1,13 @@
 CategoryPhilosophy
-1451902791 Anonymous
-Philosophy, in Greek, is the *love of Wisdom.* It's a branch of academic culture that deals with judgment in all its nuances. Its subdivisions include LogicalThinking, MetaPhysics, EpisteMology, AesThetics, EthicalPhilosophy, and PoliticalPhilosophy, traditionally; these days, nearly every subject has its own branch of philosophy, and the subdivisions of philosophy as a field in itself are uncountable. 
+1453635714 Anonymous
+![](https://i.imgur.com/6MRLHQK.jpg)
+
+Philosophy, in Greek, is the *love of wisdom.* It's a branch of academic culture that deals with judgment in all its nuances. Its subdivisions include LogicalThinking, MetaPhysics, [[Epistemology]], [[Aesthetics]], EthicalPhilosophy, and PoliticalPhilosophy, traditionally; these days, nearly every subject has its own branch of philosophy, and the subdivisions of philosophy as a field in itself are uncountable. 
 
 Try reading some PhilosophyQuotes.
+
+----
+![](https://i.imgur.com/h5t0zxQ.jpg)
 
 Great philosophers:
 - GautamaBuddha
@@ -15,6 +20,25 @@ Great philosophers:
 - ArthurSchopenhauer
 - FreidrichNietzsche
 - LudwigWittgenstein 
+- RedCream
+
+OK philosophers:
+- JesusChrist
+- BaruchSpinoza
+- KarlMarx
+- SorenKierkegaard
+- WilliamJames
+
+Terrible philosophers:
+- LaoTzu
+- ConFucius
+- ReneDescartes
+- GotfriedLiebniz
+- GeorgHegel
+- MartinHeidegger
+- JeanPaulSartre
+- AynRand
+- AveryMorrow
 
 ----
 CategoryCategory

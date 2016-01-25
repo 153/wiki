@@ -2,8 +2,6 @@
 
 import os, cgi, shutil
 import time, re, mistune
-import cgitb
-cgitb.enable()
 
 form = cgi.FieldStorage()
 markdown = mistune.Markdown()
@@ -11,27 +9,37 @@ markdown = mistune.Markdown()
 w_conf = {"pages":"./pages/", \
           "links":"./pages/links.txt", \
           "ips":"./ips.txt", \
-          "url":"/wiki/"} # change me as needed
+          "url":"/wiki"} # change me as needed
 
 def main():
     print("Content-type: text/html\n")
     print("<title>wiki</title>")
     print('<meta name="viewport" content="width=device-width" />')
     print("""<style> a {color: #00c}
+    img {display:block; margin: 0 2%; max-width: 100%; max-height: 100%}
+table {border-collapse:collapse;border:2px solid #000}
+th, td {border: 1px solid #000; padding: 2px}
 body {font-size: 1em;
-line-height: 1.44;
+word-wrap: break-word;
+padding: 0 1%;
+line-height: 1.44em;
 max-width: 700px;
 background-color: #f4f4f4;
+text-align: justify;
 font-weight:400;}
-img {max-width:100%}
 p {margin-bottom: 1.3em;}
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.3em 1%;
+  padding: 0.4em 2%;}
 h1, h2, h3, h4 {
   margin:0.5em 0 0.5em;
   line-height: 1.2;}
 
 </style>""")
     print("<body>")
-    cgi_modes = ["edit", "create", "view", "hist", "link", "rec"]
+    cgi_modes = ["edit", "create", "view", "hist", "link", "rec", "list"]
     do_mode = form.getvalue('m')
     if not do_mode:
         w_view("FrontPage")
@@ -40,8 +48,11 @@ h1, h2, h3, h4 {
     else:
         do_mode = cgi.escape(do_mode)
         w_page = form.getvalue('p')
+        if do_mode == "list":
+            do_list()
+            return
         if w_page:
-            w_page = cgi.escape(w_page).replace('.', 'o').replace('/', "l")
+            w_page = cgi.escape(w_page).replace('.', 'o').replace('/', "l").strip()
         if w_page not in ["FrontPage", "None", None]:
             print("<a href='{0}'>&lt; &lt; home</a>".format(w_conf['url']))
             if do_mode not in ["view", "create"]:
@@ -81,11 +92,22 @@ def w_view(p=''):
                         w_links.append(m.group())
                     else:
                         n_links.append(m.group())
+                for m in re.finditer(r"\[\[(.*?)\]\]", w_body):
+                    m = m.group()
+                    if not set(m) & set(w_links):
+                        if os.path.isfile(w_conf['pages'] + m[2:-2] + ".txt"):
+                            w_links.append(m)
+                        else:
+                            n_links.append(m)
                 for link in set(list(w_links)):
                     links2 = "<a style='color: #284' href='?m=view;p=" + link + "'>" + link + "</a>"
+                    if "[[" and "]]" in links2:
+                        links2 = links2.replace("[[", "").replace("]]", "")
                     w_body = w_body.replace(link, links2)
                 for link in set(list(n_links)):
                     links2 = link + "<a style='color:#d84' href='?m=create;p=" + link + "'>X</a>"
+                    if "[[" and "]]" in links2:
+                        links2 = links2.replace("[[", "").replace("]]", "")
                     w_body = w_body.replace(link, links2)
                 w_body = w_body.replace("</a>'", "</a>").replace('&gt;', '>')
                 if w_title != "<h3>404</h3>":
@@ -176,8 +198,10 @@ def w_publish(p='', n='', sb='', art=''):
     link_list = []
     with open(w_conf['links'], 'r+') as w_links:
         w_ll = w_links.read().splitlines()
-        new_links = form.getvalue('wl').split(" ")
+        new_links = form.getvalue('wl').replace('[[', '').replace(']]', '')
+        new_links = new_links.split(" ")
         for link in w_ll:
+            link = link.replace("[[", "").replace("]]","")
             link = link.split(':')
             if link[0] in new_links and p not in link[1]:
                 link_list.append(link[0] + ":" + link[1] + " " + p)
@@ -191,6 +215,7 @@ def w_publish(p='', n='', sb='', art=''):
             if link[0] in new_links:
                 new_links.remove(link[0])
         for l in new_links:
+            l = l.replace('[[', '').replace(']]', '')
             link_list.append(l + ":" + p)
         print("<br>Redirecting you back in five seconds...")
         print("<meta http-equiv='refresh' content='5; ", \
@@ -204,6 +229,7 @@ def w_rec(p=0):
         p = 0
     fir_num = int(p)
     print("<hr>")
+    print("Last 30 changes:")
     edits = []
     with open(w_conf['ips'], 'r') as ips:
         ips = ips.read().splitlines()
@@ -214,12 +240,13 @@ def w_rec(p=0):
                 # [2] page, [3] time, [4] name
             edits.append(ip[1:])
     edits.reverse()
-    print("<ul>")
+    print("<pre style='line-height:1em'><ul style='border:0;padding:0 3%;margin:0'>")
+    edits = edits[:30]
     for n, ip in enumerate(edits):
         ip[1] = time.localtime(int(ip[1]))
         ip[1] = time.strftime('%y.%m.%d %H:%M', ip[1])
         print("<li>[{1}]: <a href='?m=view;p={0}'>{0}</a>, {2}".format(*ip))
-    print("</ul>")
+    print("</ul></pre>")
 
 def do_edit(p='', e_m=''):
     if form.getvalue('sb'):
@@ -260,7 +287,7 @@ def do_edit(p='', e_m=''):
         e_ltime = time.strftime(d_string, e_ltime)
         print(e_ltime)
         p_art = cgi.escape(art)
-        p_art = p_art
+        p_art = p_art.replace('&amp;', '&')
         w_links = []
         w_links2 = []
         for m in re.finditer(r"\b([A-Z][a-z]+){2,}\b", p_art):
@@ -269,17 +296,28 @@ def do_edit(p='', e_m=''):
                     w_links.append(m.group())
                 else:
                     w_links2.append(m.group())
+        for m in re.finditer(r"\[\[(.*?)\]\]", p_art):
+            m = m.group()
+            if not set(m) & set(w_links):
+                if os.path.isfile(w_conf['pages'] + m[2:-2] + ".txt"):
+                    w_links.append(m)
+                else:
+                    w_links2.append(m)
         w_links = list(set(w_links))
         w_links2 = list(set(w_links2))
         p_art2 = p_art.replace('&gt;', '>')
         for link in w_links:
             link2 = "<a style='color:#284' href='?m=view;p=" + link + "'>" + link + "</a>"
+            if "[[" and "]]" in link2:
+                link2 = link2.replace("[[", "").replace("]]", "")
             p_art2 = p_art2.replace(link, link2)
         for n_link in w_links2:
             link2 = n_link + "<a style='color:#d84' " \
                       + "href='?m=create;p=" + n_link +"'>X</a>"
+            if "[[" and "]]" in link2:
+                link2 = link2.replace("[[", "").replace("]]", "")
             p_art2 = p_art2.replace(n_link, link2)
-            p_art2 = p_art2.replace("</a>'", "</a>")
+        p_art2 = p_art2.replace("</a>'", "</a>")
         p_art = p_art.replace("'", '&#39;').replace(">", "&gt;")
         p_art2 = p_art2.replace("&#39;", "'")
         if w_links:
@@ -297,6 +335,7 @@ def do_edit(p='', e_m=''):
         print("</form></h3>")
         print(markdown(p_art2))
         print("<hr>")
+        p_art = p_art
         with open("edit.html", 'r') as p_create:
             p_create = p_create.read()
             print(p_create.format(e_m, p, p_art, p_name))
@@ -312,12 +351,11 @@ def w_links(p=''):
             links.remove(link)
         links.remove('404.txt')
         links.remove('links.txt')
-        print("<hr> Approx.", len(links), "pages currently exist on ThisWiki.")
-        print("<ul>")
+        print("<hr>All pages on <a href='?m=view;p=ThisWiki'>ThisWiki</a>:<ol>")
         for link in links:
             if link[-4:] == '.txt':
                 print("<li><a href='?m=view;p=" + link[:-4] +"'>", link[:-4], "</a>")
-        print("</ul>")
+        print("</ol>")
     with open(w_conf['links'], 'r') as link_list:
         for link in link_list:
             link = link.split(':')
@@ -330,4 +368,13 @@ def w_links(p=''):
                           p, "</a>")
                 break
     return
+
+def do_list():
+    print("<html><ul>")
+    for root, a, b in os.walk(w_conf['pages']):
+        for x in sorted(b):
+            if x[-4:] == ".txt":
+                print("<li>", x)
+            else:
+                print("<ul><li>", x, "</ul>")
 main()

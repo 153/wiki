@@ -1,34 +1,26 @@
 ThisWiki
-1452253877 Anonymous
-This wiki is based on WikiWiki and allows AnonyMous editing. Unlike WikiWiki, this site is PublicDomain and open to editing.  I hope that it can be used by the people who use the TextBoard on this website. 
+1452262677 Anonymous
+This wiki is based on WikiWiki and allows AnonyMous editing. However, it's only based on how WikiWiki seems; I have no experience with it past viewing pages. Unlike WikiWiki, this site is PublicDomain and open to editing.  I hope that it can be used by the people who use the TextBoard on this website. 
 
 Spammers be warned: IPs are logged and backups are kept!
 
-----
-### Features
-* MarkDown editing 
-* AnonyMous / pseudonymous editing and page creation
-* Mobile and IE friendly
-* Categories, indexing, backlinking 
-* Backups and recent changes (being added)
-
-----
-### Formatting
+#### Formatting
 * Use CamelCase to make links! If a page doesn't exist, a link to create it appears.
 * An empty line followed by  "\-\-\-\-" make a horizontal line. They're good for indicating a new author, a new section, etc.
 * XSS is blocked, don't try that 13 year old crap
 * Try MarkDown for everything else. (\*italics\*), (\*\*bold\*\*), (\[link\]\(url\)), etc
 
-----
 What should go here:
 * interesting content 
 * original content 
 * opinion pieces, advice
-* articles on things you go
+* internet culture
+* articles on places you go online?
 * Text-heavy content 
 
 What shouldn't go here:
 * spam
+* NSFW stuff
 * crappy edits
 * big chunks of other people's writing 
 * image dumps

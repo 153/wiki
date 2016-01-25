@@ -1,6 +1,6 @@
 TextBoard
-1452044868 Anonymous
-A textboard is a special kind of Japanese forum that is more like a guestbook than traditional forum software.
+1453357110 Anonymous
+A textboard is a special kind of Japanese forum that is more like a guestbook than traditional forum software. They tend to be AnonyMous, not requiring an account to post.
 
 Examples of TextBoard's:
 
@@ -14,6 +14,7 @@ Examples of TextBoard's:
 - SageruOrg by MeltingWax
 - TableCat
 - IyagiBbs by FourByThirteen
+- [Big list](/list) of boards
 
 ----
 CategorySoftware

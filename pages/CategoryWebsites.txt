@@ -1,5 +1,5 @@
 CategoryWebsites
-1451889285 Anonymous
+1453643460 Anonymous
 websites liked by the people of ThisWiki.
 
 - SageruOrg - http://sageru.org/
@@ -9,6 +9,9 @@ websites liked by the people of ThisWiki.
 - FourChan - http://4chan.org/
 - IyagiBbs - http://4x13.net/misc/bbs/
 - TableCat - http://tablecat.ipyo.heliohost.org/lounge/
+- ProgRider - http://progrider.org/
+- RedDit - http://reddit.com/
+- WorldTwoCh - http://world2ch.org/
 
 ----
 CategoryCategory

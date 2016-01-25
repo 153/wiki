@@ -1,8 +1,8 @@
 HackerNews
-1451890985 Anonymous
-The reddit of programming and startups. Half of the content is good, half is terrible. Can you guess which community posts what? It has great design and a pretty good thing going in its comments section. I prefer it to Reddit's programming forum and SlashDot, anyway.
+1453643275 Anonymous
+The reddit of programming and startups. Half of the content is good, half is terrible. Can you guess which community posts what? It has great design and a pretty good thing going in its comments section. I prefer it to RedDit''s programming forum and SlashDot, anyway. 
 
-If you think about it, the goal of finding the best news possible conflicts with the goal of letting a minority of organizations succeed financially because they want more money, all other things aside. 
+If you think about it, the goal of finding the best news possible, especially in  the coding word, conflicts with the goal of startup culture (profit for a few). Those on ProgRider often refer to it as Hacker Jews.
 
 Located at http://hackerne.ws/ and coded in a trendy LISP.
 

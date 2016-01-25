@@ -1,0 +1,8 @@
+Double Brackets
+1453258409 Anonymous
+Not every occasion calls for the usage of CamelCase for a page title. Short words or abbreviations, in particular, stand out. Unlike WikiWiki, ThisWiki allows a workaround: to link to these eccentric pages, wrap a word in [[Double Brackets]]. 
+
+One thing to watch out for: this is a *case sensitive* operation! Make sure to preview the page before clicking submit, if you do this, or check the [all pages](?m=link) directory to confirm a page's proper name.
+
+----
+CategoryMeta

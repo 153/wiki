@@ -1,0 +1,13 @@
+InternetRelayChat
+1451891603 Anonymous
+IRC is a great way to connect with others online. Here's some approved channels/networks:
+
+- irc.sageru.org  (SageruOrg)
+ - #jp -- AnonyMous chat, what what? 
+- irc.rizon.org 
+ - #tohno-chan - Chat about waifus, JapaneseAnime, NeetLife
+ - #philo - Chat about CategoryPhilosophy
+ - #saovq - TextBoard's, KareHa aficionados, expert programmers
+
+----
+CategorySoftware CategoryWebsites 

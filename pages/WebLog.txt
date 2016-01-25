@@ -1,5 +1,5 @@
 WebLog
-1452043796 Anonymous
+1452262689 Anonymous
 Basic Python3 flatfile blog at FourByThirteen. It's PublicDomain (noticing a pattern?). Infrequently updated; lacks RSS.
 
 - Source: http://github.com/153/wlog 

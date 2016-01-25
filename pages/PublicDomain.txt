@@ -1,10 +1,114 @@
 PublicDomain
-1451899855 Anonymous
-Public domain software is like open source or free software, but even more open and more free. 
+1452261517 Anonymous
+Public domain software (copyfree) is like open source or free software (copyleft), but even more open and more free. People like Richard M. Stallman say that the culture built around "open source" software should be built around "free" software, and free software comes from having strategic limited restrictions in licensing regarding general permissiveness with analysis, usage, redistribution, and modification clauses. But, to say that more freedom comes from legal constraints is stupid, and Stallman should know that! The most free that information can be is when it's in the public domain, as there, it lacks limitations. 
 
-Some software licenses that put software into the public domain include the CC0, Do Whatever The Fuck You Want With It license, and several others. However, "public domain" is a license in itself, in practice.
+Some software licenses that put software into the public domain include the CC0, Do Whatever The Fuck You Want With It license, and several others. More general information [available here](http://copyfree.org/standard/licenses).
 
-My rational for it -- people are going to copy what they want, how they want; you may as well let them.
+### Licenses
+* CC0
+* Simplified BSD
+* MIT
+* Tiny License
+* Unlicense
+
+----
+**CC0** (this wiki's license)
+> The person who associated a work with this deed has dedicated the work to the public domain by waiving all of his or her rights to the work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.
+
+> You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. 
+
+> In no way are the patent or trademark rights of any person affected by CC0, nor are the rights that other persons may have in the work or in how the work is used, such as publicity or privacy rights.
+
+> Unless expressly stated otherwise, the person who associated a work with this deed makes no warranties about the work, and disclaims liability for all uses of the work, to the fullest extent permitted by applicable law.
+
+> When using or citing the work, you should not imply endorsement by the author or the affirmer.
+
+
+----
+**Simplified BSD**
+> Copyright <YEAR> <COPYRIGHT OWNER>. All rights reserved.
+
+> Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+> 1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+> 2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+> THIS SOFTWARE IS PROVIDED BY [COPYRIGHT HOLDER] AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL [COPYRIGHT HOLDER] OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+----
+**MIT License**
+> Copyright (c) <year> <copyright holders>
+
+> Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+> The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+----
+**Tiny License**
+> Copyright <YEAR> <LICENSOR>
+
+> You may do anything with this work that copyright law would normally
+restrict, so long as you retain the above notice(s) and this license
+in all redistributed copies and derived works.  There is no warranty.
+
+----
+**Unlicense**
+> This is free and unencumbered software released into the public domain.
+
+> Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+> In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+> For more information, please refer to <http://unlicense.org/>
+
+----
+
+My rational for the public domain -- people are going to copy what they want, how they want; you may as well let them.
 
 ----
 CategorySoftware CategoryPhilosophy

@@ -1,27 +1,8 @@
 IpAddress
-1452248387 Anonymous
-An IP address is a computer's (usually a router's) InterNet address at a given time. IPv4 addresses come in the format ###.###.###.###, from 0.0.0.0 -- 255.255.255.255. Most computers only have one IP address, and most IP addresses refer to a single computer at a point in time. For this reason, they provide the closest thing to an identity when users are otherwise AnonyMous. 
+1453432818 Anonymous
+An IP address is a computer's (usually a router's) InterNet address at a given time. IPv4 addresses come in the format ###.###.###.###, from 0.0.0.0 -- 255.255.255.255. IPv6 (the current version of the Internet Protocol) addresses come in the format XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX, from 0000:0000:0000:0000:0000:0000:0000:0000 -- FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF.  Most computers only have one IP address, and most IP addresses refer to a single computer at a point in time. For this reason, they provide the closest thing to an identity when users are otherwise AnonyMous. 
 
 Most consumers have dynamic IPs, meaning that their IP address can change. However, the ISP which connects people to the InterNet generally stores the MacAddress associated with a given IP, so you are not anonymous to them, even if your public internet address changes. 
 
 ----
-On ThisWiki, you are not completely AnonyMous, because your IP is locally stored for the purposes of moderation. 
-
-     with open(w_conf['ips'], "a+") as ipl:
-        ip = os.environ["REMOTE_ADDR"]
-        ip = "|".join(["\n", ip, p, meta])
-        ipl.write(ip)
-
-Produces something like...
-
-|ip address|page name|unix time + author name|
-|---|---|---|---|
-|127.0.0.1|CategoryCategory|1452246590 Anonymous|
-|127.0.0.1|CategoryCategory|1452246648 Anonymous|
-|127.0.0.1|IpAddress|1452247181 Anonymous
-
-
-Every time a page is edited, a copy of the article is stored with the last value (time and author) in the second line of the file. Cross referenced with the IP address, spammers can be easily seen by the moderator and dealt with. This will be used to form the basis of the "Recent Changes" page soon... and if you want an anonymous Wiki, you are certainly welcome to remove the part of the script that logs the IP yourself.
-
-----
-CategoryMeta
+Your IP is logged when you make edits to ThisWiki or post on IyagiBbs. Your IP is also logged when you visit nearly any webpage in existence. 

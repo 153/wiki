@@ -1,0 +1,22 @@
+GnuNotUnix
+1453698302 Anonymous
+The GNU people (which stands for GNU's not UNIX), located at http://gnu.org/, are notable for two things, a FreeSoftware license that's copyleft, and a their free UNIX clone/software that's licensed in this way. If you use GnuLinux, thank these guys.
+
+### What is the GNU license?
+&gt; A program is FreeSoftware if the program's users have the four essential freedoms:
+
+&gt; * The freedom to run the program as you wish, for any purpose 
+&gt;  * (freedom 0).
+&gt; * The freedom to study how the program works, and change it so it does your computing as you wish 
+&gt;  * (freedom 1).  
+&gt; * The freedom to redistribute copies so you can help your neighbor 
+&gt;  * (freedom 2).
+&gt; * The freedom to distribute copies of your modified versions to others
+&gt;  * (freedom 3). 
+&gt;
+&gt; By doing this you can give the whole community a chance to benefit from your changes. 
+
+PublicDomain is a much freer software license, but everyone has their own tastes.
+
+----
+CategoryWebsites CategorySoftware

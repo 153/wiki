@@ -1,0 +1,23 @@
+WikiPedia
+1453696270 Anonymous
+Wikipedia (created in 2001), located at https://en.wikipedia.org/wiki/Main_Page, is the world's largest encyclopedia. It's ran with a software similar to WikiWiki called MediaWiki, which has slightly different rules for text formatting (rejecting the MarkDown and BbCode approaches alike). It managed to be so successful from its "5 pillars", which describe its approach toward open sourcing knowledge. 
+
+Everything posted on Wikipedia must be valid under the "five pillars":  
+*(note, [Islam has 5 pillars](http://www.islam-guide.com/ch3-16.htm), too!)*
+
+1. Wikipedia is an encyclopedia.
+
+2. Wikipedia is written from a neutral point of view.
+
+3. Wikipedia is free content that anyone can use, edit, and distribute.
+
+4. Editors should treat each other with respect and civility.
+
+5. Wikipedia has no firm rules.
+
+AnonyMous posting is allowed on Wikipedia, but the IpAddress'es of anonymous users are publicly logged to promote the use of moderation, as needed. 
+
+Arguably, TvTropes follows all five pillars, even if its tone is not academic. WikiWiki observed pillars 3, 4, 5. TableCat''s wiki observed principles 3 and 5. [[Shii]]''s wiki observed principals 1, 5, and half of 3, being a PersonalWiki, as does [[0037]]''s wiki at WorldTwoCh. 
+
+----
+CategoryWebsites 
