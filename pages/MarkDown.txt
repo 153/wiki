@@ -1,5 +1,5 @@
 MarkDown
-1453643527 Anonymous
+1463711849 Anonymous
 Markdown is a cool formatting language that's simpler and more intuitive than HTML and BbCode. ThisWiki, along with sites like GitHub and RedDit, use Markdown so that plain text editing is an attractive alternative to WYSIWYG editors. We have our own Markdown renderer powered by Mistune in Python. 
 
 Blessed book in the cult of MarkDown: 
@@ -22,6 +22,3 @@ Some Markdown works on here, like:
 ![](http://i.imgur.com/zJpXv.png) 
 
 Can you see how images are embedded? 
-
-----
-CategorySoftware CategoryMeta

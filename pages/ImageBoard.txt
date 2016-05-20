@@ -1,8 +1,0 @@
-ImageBoard
-1453357155 Anonymous
-An **imageboard** is a site a bit like a TextBoard in that it allows for AnonyMous posting; however, it's ran more like an image gallery than it is a guestbook, and most imageboards act more like chatrooms in practice than discussion forums, as images can be used like emoticons and threads tend to be deleted within a week of their creation (or, on FourChan, within two hours). 
-
-A big list of imageboards can be found [here](/list).
-
-----
-CategorySoftware

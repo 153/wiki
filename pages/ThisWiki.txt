@@ -1,6 +1,6 @@
 ThisWiki
-1452262677 Anonymous
-This wiki is based on WikiWiki and allows AnonyMous editing. However, it's only based on how WikiWiki seems; I have no experience with it past viewing pages. Unlike WikiWiki, this site is PublicDomain and open to editing.  I hope that it can be used by the people who use the TextBoard on this website. 
+1463711934 Anonymous
+This wiki is based on WikiWiki and allows Anonymous editing. However, it's only based on how WikiWiki seems; I have no experience with it past viewing pages. Unlike WikiWiki, this site is PublicDomain and open to editing. 
 
 Spammers be warned: IPs are logged and backups are kept!
 
@@ -25,6 +25,3 @@ What shouldn't go here:
 * big chunks of other people's writing 
 * image dumps
 * shitposting
-
-----
-CategoryWebsites CategorySoftware FourByThirteen CategoryMeta

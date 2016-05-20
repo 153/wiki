@@ -1,68 +1,10 @@
-AnonyMous:IpAddress AnonyMous ThisWiki FourChan FrontPage ImageBoard InternetRelayChat JayPee KareHa CategoryPeople MeltingWax AveryMorrow TohnoChan TextBoard WorldTwoCh Shii ProgRider ShiiChan WorldFourCh SlashDot RightToVanish InterNet WikiPedia
-ThisWiki:IpAddress AnonyMous CamelCase FourByThirteen FrontPage MarkDown WikiWiki CategoryWebsites CategoryMeta CategorySoftware Double Brackets InterNet
-IyagiBbs:IpAddress FourByThirteen KareHa CategoryWebsites CategorySoftware TextBoard Chan CategoryRecommendations ShiiChan
-InterNet:IpAddress Shii BbCode RightToVanish MentalIllness
-CategoryPeople:AnonyMous FourByThirteen TableCat TheJews GautamaBuddha LudwigWittgenstein DavidHume RedCream KarlMarx MeltingWax Futuristipastica11Cauoo XsTV Shii AveryMorrow 0037 MarcusAurelius ThomasHobbes
-JayPee:AnonyMous InternetRelayChat SageruOrg
-FrontPage:AnonyMous
-IpAddress:AnonyMous IyagiBbs WikiPedia
-ImageBoard:AnonyMous FourChan KareHa TohnoChan WorldTwoCh InterNet Shii
-FourChan:AnonyMous ImageBoard CategoryWebsites AveryMorrow WorldTwoCh ProgRider Chan ShiiChan IyagiBbs
-TextBoard:AnonyMous ThisWiki FourByThirteen ImageBoard InternetRelayChat IyagiBbs KareHa SageruOrg TableCat RedCream TextBoard AveryMorrow WorldTwoCh InterNet Shii ShiiChan CategorySoftware WorldFourCh ProgRider CategoryRecommendations
-MarkDown:ThisWiki FrontPage MarkDown BbCode WikiPedia
-CategoryWebsites:ThisWiki FourChan FourByThirteen HackerNews InternetRelayChat IyagiBbs SageruOrg TableCat WebLog WikiWiki TohnoChan ProgRider BbCode WorldFourCh SlashDot WorldTwoCh RedDit WikiPedia GnuNotUnix
-CategorySoftware:ThisWiki PublicDomain FourByThirteen GnuLinux HackerNews ImageBoard InternetRelayChat IyagiBbs KareHa MarkDown TableCat WebLog WikiWiki TextBoard AddOns BbCode Chan ShiiChan GnuNotUnix
-PublicDomain:ThisWiki FourByThirteen FrontPage IyagiBbs KareHa WebLog FourByThirteenIcons GnuNotUnix
-WikiWiki:ThisWiki FrontPage PortlandOregon TableCat WikiWiki CategoryWebsites Double Brackets CategorySoftware WikiPedia
-CamelCase:ThisWiki FrontPage WikiWiki Double Brackets
-FourByThirteen:ThisWiki IyagiBbs KareHa PortlandOregon WebLog CategoryWebsites CategoryPeople TextBoard InterNet FourByThirteenIcons
-CategoryMeta:ThisWiki CamelCase FourByThirteen FrontPage MarkDown WikiWiki SandBox Double Brackets IyagiBbs
-KareHa:CamelCase InternetRelayChat IyagiBbs SageruOrg CategorySoftware TextBoard BbCode Chan CategoryRecommendations ShiiChan
-CategoryPhilosophy:PublicDomain HeartSutra InternetRelayChat LogicalThinking LudwigWittgenstein MetaPhysics PhilosophyQuotes MirandaMoonRevivalSociety KarlMarx LaoTzu JesusChrist CategoryRecommendations GautamaBuddha RightToVanish GeorgHegel MarcusAurelius ThomasHobbes
-WebLog:FourByThirteen WebLog
-GnuLinux:GnuLinux PortlandOregon CategorySoftware SlashDot GnuNotUnix
-PortlandOregon:GnuLinux FourByThirteen
-SageruOrg:InternetRelayChat JayPee KareHa CategoryWebsites MeltingWax TextBoard
-InternetRelayChat:JayPee CategorySoftware MeltingWax TohnoChan
-MeltingWax:JayPee SageruOrg CategoryPeople MeltingWax TextBoard InterNet
-TableCat:KareHa CategoryWebsites CategoryPeople RedCream Futuristipastica11Cauoo_XsTV TextBoard InterNet ProgRider BbCode Chan CategorySoftware CategoryRecommendations ShiiChan IyagiBbs WikiPedia
-LogicalThinking:LudwigWittgenstein CategoryPhilosophy
-MetaPhysics:LudwigWittgenstein CategoryPhilosophy GeorgHegel
-GautamaBuddha:PhilosophyQuotes CategoryPhilosophy LaoTzu CategoryReligion MarcusAurelius
-CategoryPlaces:PortlandOregon TheUsa
-LudwigWittgenstein:CategoryPhilosophy
-DavidHume:CategoryPhilosophy
-DiogenesOfSinope:CategoryPhilosophy MarcusAurelius
-CategoryCategory:CategoryPhilosophy CategoryWebsites CategoryMeta CategoryPeople CategoryPlaces CategorySoftware CategoryRecommendations CategoryReligion
-PhilosophyQuotes:CategoryPhilosophy GautamaBuddha
-HackerNews:CategoryWebsites SlashDot RedDit AnonyMous
-TheUsa:PortlandOregon
-RedCream:CategoryPeople RedCream CategoryPhilosophy InterNet
-KarlMarx:CategoryPhilosophy GeorgHegel
-AveryMorrow:CategoryPeople Shii 0037 CategoryPhilosophy CategoryRecommendations InterNet
-ZeroZeroThreeSeven:
-TohnoChan:InternetRelayChat
-SKE48:FrontPage
-SaOvq:TextBoard KareHa
-AddOns:CategoryRecommendations
-CategoryRecommendations:Reads AddOns
-Reads:CategoryRecommendations
-Shii:AveryMorrow 0037 CategoryPeople FrontPage JayPee InterNet Chan WorldFourCh FourChan ShiiChan RightToVanish WikiPedia
-0037:AveryMorrow WorldTwoCh JayPee InterNet FourChan Shii ZeroZeroThreeSeven WikiPedia
-WorldTwoCh:0037 CategoryWebsites AveryMorrow KareHa WikiPedia
-BbCode:Chan ProgRider ShiiChan MarkDown WikiPedia
-ShiiChan:CategorySoftware Shii WorldFourCh ProgRider AveryMorrow IyagiBbs
-WorldFourCh:FourChan ProgRider Shii ShiiChan TableCat
-ProgRider:HackerNews ProgRider FourChan CategoryWebsites
-SlashDot:HackerNews RedDit AnonyMous
-LaoTzu:CategoryPhilosophy CategoryReligion
-JesusChrist:CategoryPhilosophy CategoryReligion MarcusAurelius
-CategoryReligion:GautamaBuddha LaoTzu
-HeartSutra:GautamaBuddha
+BbCode:MarkDown
+CamelCase:FrontPage ThisWiki
+FrontPage:CamelCase
+GitHub:MarkDown
+MarkDown:FrontPage MarkDown ThisWiki
+PublicDomain:ThisWiki
+RedDit:MarkDown
 SandBox:FrontPage
-MentalIllness:MirandaMoonRevivalSociety
-GeorgHegel:CategoryPhilosophy
-RedDit:HackerNews CategoryWebsites MarkDown AnonyMous
-RightToVanish:AnonyMous
-WikiPedia:WikipediaIsEvil
-GnuNotUnix:GnuLinux
+ThisWiki:FrontPage MarkDown
+WikiWiki:FrontPage ThisWiki

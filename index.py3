@@ -9,7 +9,7 @@ markdown = mistune.Markdown()
 w_conf = {"pages":"./pages/", \
           "links":"./pages/links.txt", \
           "ips":"./ips.txt", \
-          "url":"/wiki"} # change me as needed
+          "url":"."} # change me as needed
 
 def main():
     print("Content-type: text/html\n")
@@ -217,6 +217,7 @@ def w_publish(p='', n='', sb='', art=''):
         for l in new_links:
             l = l.replace('[[', '').replace(']]', '')
             link_list.append(l + ":" + p)
+        link_list = sorted(link_list)
         print("<br>Redirecting you back in five seconds...")
         print("<meta http-equiv='refresh' content='5; ", \
               "url=?m=view;p={0}'>".format(p))
@@ -322,6 +323,9 @@ def do_edit(p='', e_m=''):
         p_art2 = p_art2.replace("&#39;", "'")
         if w_links:
             w_links = " ".join(w_links)
+        if w_links2 and w_links:
+            for i in w_links2:
+                w_links += " " + i
         if p_art2:
             print("<hr><h3><form method='post' action='.'> Preview:")
             print("<input type='submit' value='Publish'>")
