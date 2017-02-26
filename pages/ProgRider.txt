@@ -1,0 +1,12 @@
+ProgRider
+1453621596 Anonymous
+![](https://i.imgur.com/tDR8H3vm.png)
+
+Site: http://progrider.org/ (featuring [/prog/](http://bbs.progrider.org/prog/))
+
+Very hip and cool AnonyMous textboard about computer programming. It original ran on WorldFourCh, FourChan''s textboard. It notably supported BbCode but had a very awful software called ShiiChan. The current version also supports BBcode, unlike other TextBoard scripts.
+
+ProgRider is powered by TableCat''s BBS script, as is the fake /prog/ at https://dis.4ct.org/prog/. 
+
+---
+CategoryWebsites

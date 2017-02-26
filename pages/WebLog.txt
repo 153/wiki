@@ -1,6 +1,6 @@
 WebLog
-1452043796 Anonymous
-Basic Python3 flatfile blog at FourByThirteen. It's PublicDomain (noticing a pattern?). Infrequently updated; lacks RSS.
+1461543835 Anonymous
+Basic Python3 flatfile blog at FourByThirteen. It's PublicDomain (noticing a pattern?). Infrequently updated, but has a cool Atom feed for staying in the loop.
 
 - Source: http://github.com/153/wlog 
 - Implementation: http://4x13.net/wlog

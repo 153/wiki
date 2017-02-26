@@ -1,0 +1,40 @@
+LudwigWittgenstein
+1453981560 Anonymous
+![](https://i.imgur.com/Z51wJ7x.jpg)
+
+Ludwig Wittgenstein (1889 - 1951) was a philosopher interested in MetaPhysics, LogicalThinking, and EpisteMology. He wrote two greatly influential books, the Tractatus Logico-philosophicus (writing on logic and philosophy), which sought to define the scope and methods of philosophy, eliminating many of its problems in the process, as well as Philosophical Investigations, which was meant to cast doubt on what he said in the previous work. 
+
+A great introduction to his thought [is the Tractatus](http://www.tractatuslogico-philosophicus.com/), visualized in JavaScript. Try clicking on each of the propositions to see how they're defined. 
+
+Works:
+* Notebooks 
+* Tractatus Logico-Philosophicus
+* Foundations of Mathematics
+* Blue and Brown Books
+* Philosophical Investigations
+* Philosophical Grammar
+* ... 
+
+----
+Quotes:
+* My difficulty is only an - enormous - difficulty of expression. 
+* Certainly it is correct to say: Conscience is the voice of God. 
+* The World and Life are one. Life is the World. I am my world.
+* What can be said at all can be said clearly, and what we cannot talk about we must pass over in silence.
+* The logical picture of facts is the thought.
+* Philosophy aims at the logical clarification of thoughts. Philosophy is not a body of doctrine but an activity.
+* The limits of my language mean the limits of my world.
+* The subject does not belong to the world, but it is a limit of the world. 
+* To convince someone of the truth, it is not enough to state it, but rather one must find the path from error to truth. 
+
+[![](https://i.imgur.com/UETRb3am.png)](https://i.imgur.com/UETRb3a.png)
+* To obey a rule, to make a report, to give an order, to play a game of chess, are customs (uses, institutions) 
+* One can mistrust one's own senses, but not one's own belief.
+* If a lion could talk, we could not understand him.
+* What I hold fast to is not one proposition but a nest of propositions.
+* Nothing is so difficult as not deceiving oneself. 
+* One might say: Genius is talent exercised with courage.
+* You can't be reluctant to give up your lie and still tell the truth. 
+
+----
+CategoryPhilosophy CategoryPeople

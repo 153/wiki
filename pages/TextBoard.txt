@@ -1,19 +1,30 @@
 TextBoard
-1452044868 Anonymous
-A textboard is a special kind of Japanese forum that is more like a guestbook than traditional forum software.
+1453724279 Anonymous
+A textboard is a special kind of Japanese forum that is more like a guestbook than traditional forum software. They tend to be AnonyMous, not requiring an account to post.
 
 Examples of TextBoard's:
+- CGI scripts:
+ - ShiiChan, php
+ - KareHa, perl
+ - TableCat, perl
+  - EmanonBbs (patches / improvements)
+ - IyagiBbs, python
 
-- KareHa (most popular textboard software in the west)
+----
+A "who's who" and "where's where":
 
+|Site |Script |Notes/admin |
+|-|-|- |
+| TwoChannel | ??? | (largest forum in the world)
+| WorldTwoCh | KareHa | Ran by [[0037]]
+|WorldFourCh | ShiiChan | Used to run on FourChan and had a ton of boards. It sucked and is dead.
+|SaOvq | EmanonBbs | Continuation of 2006 board that ran KareHa
+|SageruOrg | KareHa | By MeltingWax since 2006
+| TableCat | TableCat | Cat on a table, perl and stuff
+| IyagiBbs | IyagiBbs | Shoutout to FourByThirteen''s BBS!
+| - | - | -
+| [Big list](/list) | - | -
 
-- TwoChannel (largest forum in the world)
-- WorldTwoCh (alive, vintage)
-- WorldFourCh (dead)
-- SaOvq (resurrected)
-- SageruOrg by MeltingWax
-- TableCat
-- IyagiBbs by FourByThirteen
 
 ----
 CategorySoftware

@@ -1,0 +1,10 @@
+EmanonBbs
+1453724654 Anonymous
+Continuation of TableCat''s BBS script, runs SaOvq. 
+
+You can download it or get help [here](http://textboard.dynu.com/#releases). 
+
+It's very WorkInProgress. Haha, you can't even download it. Just use TableCat. 
+
+----
+CategorySoftware

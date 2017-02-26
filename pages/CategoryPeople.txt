@@ -1,5 +1,5 @@
 CategoryPeople
-1452043581 Anonymous
+1453701131 Anonymous
 The world's a big place.
 
 This page tries to list some of us. 
@@ -8,6 +8,26 @@ This page tries to list some of us.
 * MeltingWax
 * FourByThirteen
 * TableCat
+* [[0037]]
+* RedCream
+* [[Futuristipastica11Cauoo XsTV]]
+* [[Shii]] / AveryMorrow
+
+**CategoryPhilosophy:**
+* GautamaBuddha
+* SocratesOfGreece
+* DiogenesOfSinope
+* MarcusAurelius
+* ThomasHobbes
+* DavidHume
+* ImmanuelKant
+* ArthurSchopenhauer
+* FreidrichNietzsche
+* LudwigWittgenstein
+* JesusChrist
+* LaoTzu
+* KarlMarx
+* GeorgHegel
 
 ----
 CategoryCategory

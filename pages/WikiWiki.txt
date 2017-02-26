@@ -1,8 +1,8 @@
 WikiWiki
-1451950699 Anonymous
+1460418266 Anonymous
 WikiWiki was the first major Wiki software. It was made by some guy named Ward. It has a bunch of articles on programming and has a simple design, like ThisWiki, and it uses CamelCase to link to articles, as well. 
 
-Check it out here -- http://c2.com/cgi/wiki
+Check it out here -- http://c2.com/cgi/wiki *DERP*
 
 ----
 CategoryMeta CategorySoftware CategoryWebsites

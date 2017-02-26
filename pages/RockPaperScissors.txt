@@ -1,0 +1,55 @@
+RockPaperScissors
+1464168932 Anonymous
+    #!/usr/bin/python3
+    import random
+    
+    rps_lis = ['rock', 'paper', 'scissors']
+    rps_dic = {'rock': 1, 'paper': 2, 'scissors': 0}
+    rps_char = dict(zip([i[0] for i in rps_lis], rps_lis))
+    
+    def main(p1=0,p2=0):
+        if 0 != p1 or 0 != p2:
+            print("--------")
+            print("You:", p1, "| Computer:", p2)
+            print("--------")
+        
+        uinp = input("\nPlease select rock [r], paper [p]"
+                     ", or scissors [s]. \n&gt; ")
+        try:
+            rps_game(uinp, p1, p2)
+        except EOFError:
+            print("thanks for playing")
+            quit
+            
+        except:
+            print("\nPlease type 'r', 'p', or 's' and hit enter.")
+            main(p1, p2)
+            
+    def rps_game(uinp, p1, p2):
+        usr_pick = rps_char[uinp.strip().lower()]
+        cpus_pick = random.randint(0,2)
+        usr_pick = [usr_pick, rps_lis[rps_dic[usr_pick]]]
+        cpu_pick = rps_lis[cpus_pick]
+        game = [str("\nYour " + usr_pick[0])]
+        if usr_pick[0] == cpu_pick:
+            game.append("tied the computer's")
+        elif usr_pick[1] == cpu_pick:
+            game.append("lost to the computer's")
+            p2 += 1
+        else:
+            game.append("beat the computer's")
+            p1 += 1
+        game.append(cpu_pick + ".")
+        print(" ".join(game))
+        main(p1, p2)
+    
+    print("bob's Rock Paper Python game")
+    main()
+    
+
+
+
+
+
+
+This shitty 2kike level python programming is exactly something I would expect from 2kike, please step up and take responsibility. Learn a better, easier to read, saner language like haskell or ruby instead. 

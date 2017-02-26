@@ -1,0 +1,8 @@
+ProgrammingLanguage
+1456993563 Anonymous
+Something used to express processes/functions in a way that's friendly to a human and computer. There's a lot more involved but that's the jist of it. Fun fact: ThisWiki was written in a programming language! 
+
+Common programming languages include C, C++, Java, Javascript, Perl, Python, Ruby, PHP, SQL, and  Lisp. Train your skills in all of them  to become the programming master and retire at 28. 
+
+----
+CategorySoftware

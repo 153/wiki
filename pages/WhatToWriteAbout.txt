@@ -1,0 +1,14 @@
+WhatToWriteAbout
+1453726884 Anonymous
+Well, you're staring at the screen, wondering what to write about, huh...?
+
+Maybe try writing about something in CategoryWebsites, CategoryPeople, or CategoryPlaces that interests you. Or write a new page or two named after things that deserve attention. Try starting CategoryPoetry, or CategoryThoughts. Write about something you know, or something interesting. Extend some short article or add your comments to an existing page: maybe you can something in the "[view all pages](?m=link)" function on ThisWiki.
+
+Remember to use MarkDown formatting; it may be helpful to know that you *can* format your text :)
+
+The best page titles are *CamelCase* without special characters. [ [Square Brackets] ] allow for linking to other words, like \[\[ [[SKE48]]\]\], but CamelCase'ing is the easiest way to link between pages on ThisWiki... 
+
+[Create a page?](?m=create)
+
+----
+CategoryMeta

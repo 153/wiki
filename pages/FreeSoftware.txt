@@ -1,0 +1,8 @@
+FreeSoftware
+1453724977 Anonymous
+Free software is generally like PublicDomain software, in that people are free to use, read, modify and copy the software they receive. But a lot of it's CopyLeft, like the GnuNotUnix license, which means you may also have to make your copy of a work open source or you may have other weird restrictions. It's similar to the creative commons licenses.
+
+GnuLinux is a famous example of free software, as is the software from the aforementioned GnuNotUnix group. 
+
+----
+CategorySoftware

@@ -1,11 +1,20 @@
 CategorySoftware
-1451898056 Anonymous
+1453724787 Anonymous
 This is just a list of software that people of ThisWiki like. Open source appreciated.
 
-- KareHa
-- IyagiBbs
-- ThisWiki
+- InternetRelayChat
+- TextBoard's:
+ - ShiiChan
+ - KareHa
+ - TableCat
+ - EmanonBbs
+ - IyagiBbs
+- Wikis:
+ - ThisWiki
+ - WikiWiki
+ - WikiPedia
 - GnuLinux
+- GnuNotUnix
 
 ----
 CategoryCategory
