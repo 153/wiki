@@ -1,7 +1,7 @@
 FrontPage
-1463669903 Anonymous
+1502994146 Anonymous
 ----
-[[home](/)] [ [view all](?m=link) . [recent changes](?m=rec) . [create new](?m=create) ]
+[ [home](/)] [ [view all](?m=link) . [recent changes](?m=rec) ] [ [create new](?m=create)]
 
 ----
 
@@ -11,17 +11,14 @@ on WikiWiki by C2.
 
 It supports:
 * Formatting via MarkDown
-* AnonyMous editing
+* Anonymous editing
 * CamelCase for internal linking
 * Page backups and changelogs
-* **New** Linking via [ [Double Brackets] ] added  
- * example: [[SKE48]], [[Shii]]
+* **New** Linking via [ [Double Brackets] ] added 
 
-Try viewing the pages on AnonyMous or ThisWiki, or make an article of your own, by following a dead link, creating a link to a non-existing page, or by modifying the URL field. Test your edits / spam the SandBox. Discuss this site / its software [on the forum](/bbs/?m=thread;t=1452115413).
+Try making an article of your own, by following a dead link, creating a link to a non-existing page, or by modifying the URL field. Test your edits / spam the SandBox. 
 
 Feel free to add your own content! All content on this wiki is PublicDomain.
-
-Images can be posted to the [Gallery](/gal).
 
 Repo: https://github.com/153/wiki
 

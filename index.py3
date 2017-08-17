@@ -10,7 +10,7 @@ markdown = mistune.Markdown()
 w_conf = {"pages":"./pages/", \
           "links":"./pages/links.txt", \
           "ips":"./ips.txt", \
-          "url":"/wiki"} # change me as needed
+          "url":"/misc/pdx/wiki"} # change me as needed
 
 def do_atom():
     atom.main()
