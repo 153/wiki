@@ -1,8 +1,11 @@
-#!/bin/python3 
+#!/usr/bin/env python3 
 
 import os, cgi, shutil
 import time, re, mistune
 import atom
+import cgitb
+import webtools as wt 
+cgitb.enable()
 
 form = cgi.FieldStorage()
 markdown = mistune.Markdown()
@@ -17,179 +20,133 @@ def do_atom():
 
     
 def main():
-    if form.getvalue('m') and form.getvalue('m') == "atom":
+    if wt.get_form('m') == "atom":
         do_atom()
         return
-    print("Content-type: text/html\n")
-    print('<link rel="alternate" type="application/atom+xml" title="wiki" href="./index.py3?m=atom" />')
-    print("<title>wiki</title>")
-    print('<meta name="viewport" content="width=device-width" />')
-    print("""<style> a {color: #00c}
-    img {display:block; margin: 0 2%; max-width: 100%; max-height: 100%}
-table {border-collapse:collapse;border:2px solid #000}
-th, td {border: 1px solid #000; padding: 2px}
-body {font-size: 1em;
-word-wrap: break-word;
-padding: 0 1%;
-line-height: 1.44em;
-max-width: 700px;
-background-color: #f4f4f4;
-text-align: justify;
-font-weight:400;}
-p {margin-bottom: 1.3em;}
-blockquote {
-  background: #f9f9f9;
-  border-left: 10px solid #ccc;
-  margin: 1.3em 1%;
-  padding: 0.4em 2%;}
-h1, h2, h3, h4 {
-  margin:0.5em 0 0.5em;
-  line-height: 1.2;}
-
-</style>""")
+    print(wt.head('wiki'))
+    print(wt.grab_html('head'))    
     print("<body>")
     cgi_modes = ["view", "hist", "link", "rec", "edit", "create"]
-    do_mode = form.getvalue('m')
-    if not do_mode:
+    do_mode = wt.get_form('m')
+    if not do_mode or do_mode not in cgi_modes:
         w_view("FrontPage")
-    elif not do_mode in cgi_modes:
-        w_view("FrontPage")
-    else:
-        do_mode = cgi.escape(do_mode)
-        w_page = form.getvalue('p')
-        if w_page:
-            w_page = cgi.escape(w_page).replace('.', 'o').replace('/', "l").strip()
-        if w_page not in ["FrontPage", "None", None]:
-            print("<a href='{0}'>&lt; &lt; home</a>".format(w_conf['url']))
-            if do_mode not in ["view", "create"]:
-                print("| <a href='{1}?m=view;p={0}'>&lt; back</a>".format(w_page, w_conf['url']))
-        elif do_mode in ["link", "hist", "create", "rec"]:
-            print("<a href='{0}'>&lt; &lt; home</a>".format(w_conf['url']))
-            
-        if do_mode == "view":
-            w_view(w_page)
-        elif do_mode == "create":
-            w_create(w_page)
-        elif do_mode == "edit":
-            w_edit(w_page)
-        elif do_mode == "link":
-            w_links(w_page)
-        elif do_mode == "hist":
-            w_hist(w_page)
-        elif do_mode == 'rec':
-            w_rec(w_page)
+        return
+    w_page = wt.get_form('p')
+    if w_page:
+        w_page = w_page.replace('.', '').replace('/', '').strip()\
+            .replace(u"\uFFFD", "?")
+    if w_page not in ["FrontPage", "None", None]:
+        print("<a href='.'>&lt; &lt; home</a>")
+        if do_mode not in ["view", "create"]:
+            print("| <a href='.?m=view;p={0}'>&lt; back</a>".format(w_page))
+    elif do_mode in ["link", "hist", "create", "rec"]:
+        print("<a href='.'>&lt; &lt; home</a>") #.format(w_conf['url']))
+        
+    do_it = f"w_{do_mode}('{w_page}')"
+    if do_mode in cgi_modes:
+        eval(do_it)
 
 def w_view(p=''):
-    if p:
-        if p != "FrontPage":
-            print("| <a href='?m=hist;p={0}'>hist</a> |".format(p))
-            print("<a href='?m=edit;p={0}'>edit</a><hr>".format(p))
-        page_loc = w_conf['pages'] + p + ".txt"
-        if os.path.isfile(page_loc):
-            with open(page_loc, "r") as w_page:
-                w_page = w_page.read().splitlines()
-                w_title = "<h3><a " + \
-                           "href='?m=link;p=" + p + "'>" + p + "</a></h3>"
-                w_body = "\n".join(w_page[2:]).replace('&#39;', "'").replace('<', '&lt;')
-                w_links = []
-                n_links = []
-                for m in re.finditer(r"\b([A-Z][a-z]+){2,}\b", w_body):
-                    if os.path.isfile(w_conf['pages'] + m.group() + ".txt"):
-                        w_links.append(m.group())
-                    else:
-                        n_links.append(m.group())
-                for m in re.finditer(r"\[\[(.*?)\]\]", w_body):
-                    m = m.group()
-                    if not set(m) & set(w_links):
-                        if os.path.isfile(w_conf['pages'] + m[2:-2] + ".txt"):
-                            w_links.append(m)
-                        else:
-                            n_links.append(m)
-                for link in set(list(w_links)):
-                    links2 = "<a style='color: #284' href='?m=view;p=" + link + "'>" + link + "</a>"
-                    if "[[" and "]]" in links2:
-                        links2 = links2.replace("[[", "").replace("]]", "")
-                    w_body = w_body.replace(link, links2)
-                for link in set(list(n_links)):
-                    links2 = link + "<a style='color:#d84' href='?m=create;p=" + link + "'>X</a>"
-                    if "[[" and "]]" in links2:
-                        links2 = links2.replace("[[", "").replace("]]", "")
-                    w_body = w_body.replace(link, links2)
-                w_body = w_body.replace("</a>'", "</a>").replace('&gt;', '>')
-                if w_title != "<h3>404</h3>":
-                    w_body = markdown(w_body)
-                print(w_title, w_body)
-                
+    if not p:
+        p = "FrontPage"
+    if p != "FrontPage":
+            print("| <a href='?m=hist;p={0}'>hist</a>".format(p))
+            print(". <a href='?m=edit;p={0}'>edit</a><hr>".format(p))
+    page_loc = w_conf['pages'] + p + ".txt"
+    if not os.path.isfile(page_loc):
+        print("<h2>404 error!!</h2>Sorry,", p, "</i> doesn't exist.")
+        print(f"<p>Would you like to <a href='?m=create;p={p}'>create</a> it?")
+        return
+    with open(page_loc, "r") as w_page:
+        w_page = w_page.read().splitlines()
+    w_title = "<h3><a href='?m=link;p=" + p + "'>" + p + "</a></h3>"
+    w_body = "\n".join(w_page[2:]).replace('&#39;', "'").replace('<', '&lt;')
+    w_links = []
+    n_links = []
+    for m in re.finditer(r"\b([A-Z][a-z]+){2,}\b", w_body):
+        if os.path.isfile(w_conf['pages'] + m.group() + ".txt"):
+            w_links.append(m.group())
         else:
-            print("<h2>404 error!!</h2>Sorry,")
-            print(p + "</i> doesn't exist.")
-            print("<p>Would you like to ")
-            print("<a href='?m=create;p={0}'>create</a> it?".format(p))
-    else:
-        w_view("FrontPage")
+            n_links.append(m.group())
+    for m in re.finditer(r"\[\[(.*?)\]\]", w_body):
+        m = m.group()
+        if not set(m) & set(w_links):
+            if os.path.isfile(w_conf['pages'] + m[2:-2] + ".txt"):
+                w_links.append(m)
+            else:
+                n_links.append(m)
+    for link in set(list(w_links)):
+        links2 = "<a style='color: #284' href='?m=view;p=" + link + "'>" + link + "</a>"
+        if "[[" and "]]" in links2:
+            links2 = links2.replace("[[", "").replace("]]", "")
+        w_body = w_body.replace(link, links2)
+    for link in set(list(n_links)):
+        links2 = link + "<a style='color:#d84' href='?m=create;p=" + link + "'>X</a>"
+        if "[[" and "]]" in links2:
+            links2 = links2.replace("[[", "").replace("]]", "")
+        w_body = w_body.replace(link, links2)
+    w_body = w_body.replace("</a>'", "</a>").replace('&gt;', '>')
+    if w_title != "<h3>404</h3>":
+        w_body = markdown(w_body)
+    print(w_title, w_body)
 
 def w_edit(p=''):
-    if p:
+    locked = ["PostModern", "AveryMorrow", "Shii",
+              "MarkDown"]
+    if p not in locked:
         do_edit(p)
         return
 
 def w_hist(p='', np=0):
-    if p:
-        links = sorted(os.listdir(w_conf['pages']))
-        hists = []
-        print("<hr>")
-        for link in links:
-            if p+"." not in link or p == "link":
-                continue
-            with open(w_conf['pages'] + link) as page:
-                page = page.read().splitlines()
-                wc = len(" ".join(page[2:]).split(" "))
-                page = page[1].split(' ')
-                d_string = '%y.%m.%d %H:%M'
-                page[0] = time.localtime(int(page[0]))
-                page[0] = time.strftime(d_string, page[0])
-                hists.append([link, page, wc])
-        if np is 1:
-            return str(p+'.txt.'+ str(len(hists)))
-        if len(hists) == 0:
-            print("Page does not exist.")
-            return
-        print(len(hists), "copies of", p, "on disk:<br>")
-        lwc = 0
-        nwc = ''
-        hists.append(hists.pop(0))
-        for i in hists:
-            if i[2] > lwc:
-                nwc = "+" + str(i[2]-lwc)
-            elif i[2] < lwc:
-                nwc = "-" + str(lwc-i[2])
-            else:
-                nwc = "+0"
-            lwc = int(i[2])
-            print("<br> @", i[1][0], "by", i[1][1])
-            print("["+str(lwc)+"w // "+nwc+"w]")
+    if not p:
+        return
+    links = sorted(os.listdir(w_conf['pages']))
+    hists = []
+    print("<hr>")
+    for link in links:
+        if p+"." not in link or p == "link":
+            continue
+        with open(w_conf['pages'] + link) as page:
+            page = page.read().splitlines()
+            wc = len(" ".join(page[2:]).split(" "))
+            page = page[1].split(' ')
+            d_string = '%y.%m.%d %H:%M'
+            page[0] = time.localtime(int(page[0]))
+            page[0] = time.strftime(d_string, page[0])
+            hists.append([link, page, wc])
+    if np is 1:
+        return str(p+'.txt.'+ str(len(hists)))
+    if len(hists) == 0:
+        print("Page does not exist.")
+        return
+    print(len(hists), "copies of", p, "on disk:<br>")
+    lwc = 0
+    nwc = ''
+    hists.append(hists.pop(0))
+    for i in hists:
+        if i[2] > lwc:
+            nwc = "+" + str(i[2]-lwc)
+        elif i[2] < lwc:
+            nwc = "-" + str(lwc-i[2])
+        else:
+            nwc = "+0"
+        lwc = int(i[2])
+        print("<br> @", i[1][0], "by", i[1][1])
+        print("["+str(lwc)+"w // "+nwc+"w]")
 
 def w_create(p=''):
     if not p:
-        print("<hr>Before creating a page, ask yourself whether",
-              "it would be a good fit for this wiki.<p><b>Type the",
-              "name in CamelCase with no digits or special",
-              "characters.</b><p>")
-        print("See: <a href='?m=view;p=WhatToWriteAbout'>WhatToWriteAbout</a>.")
-        print("<p><form action='.' method='post'>")
-        print("<input type='hidden' name='m' value='create'>")
-        print("<input type='text' name='p'>")
-        print("<input type='submit' value='Create'>")
-        print("</form>")
+        print(wt.grab_html('create'))
     else:
         do_edit(p, "create")
 
 def w_publish(p='', n='', sb='', art=''):
-    print("<p>", form.getvalue('sb'), "<br>", form.getvalue('p'), \
-          "<br>")
-    p = cgi.escape(form.getvalue('p')).replace('.', 'o').replace('/', 'l')
-    art = cgi.escape(form.getvalue('article'))
-    meta = cgi.escape(form.getvalue('sb')) + " " + cgi.escape(form.getvalue('n'))
+#    print("<p>", wt.get_form('sb'), "<br>", wt.get_form('p'), \
+#          "<br>")
+    p = wt.get_form('p').replace('.', '')\
+                        .replace('/', '').replace(u"\uFFFD", "?")
+    art = wt.get_form('article').replace(u"\uFFFD", "?")
+    meta = wt.get_form('sb') + " " + wt.get_form('n')
     if os.path.isfile(w_conf['pages'] + p + ".txt"):
         bckup = w_conf['pages'] + w_hist(p, 1)
         shutil.copyfile(w_conf['pages'] + p + ".txt", bckup)
@@ -197,7 +154,7 @@ def w_publish(p='', n='', sb='', art=''):
     with open(w_conf['pages'] + p + ".txt", "w") as wp:
         page = "\n".join([p, meta, art])
         wp.write(page)
-        print("Page", p, "written!")
+        print("<p>Page", p, "written!")
     with open(w_conf['ips'], "a") as ipl:
         ip = os.environ["REMOTE_ADDR"]
         ip = "|".join([ip, p, meta+"\n"])
@@ -205,7 +162,7 @@ def w_publish(p='', n='', sb='', art=''):
     link_list = []
     with open(w_conf['links'], 'r+') as w_links:
         w_ll = w_links.read().splitlines()
-        new_links = form.getvalue('wl').replace('[[', '').replace(']]', '')
+        new_links = wt.get_form('wl').replace('[[', '').replace(']]', '')
         new_links = new_links.split(" ")
         for link in w_ll:
             link = link.replace("[[", "").replace("]]","")
@@ -237,7 +194,9 @@ def w_rec(p=0):
         p = 0
     fir_num = int(p)
     print("<hr>")
-    print("Last 30 changes:")
+    print("<a href='?m=atom'>")
+    print('<img src="/bbs/img/rss.png">')
+    print("</a> Last 30 changes:")
     edits = []
     with open(w_conf['ips'], 'r') as ips:
         ips = ips.read().splitlines()
@@ -257,8 +216,13 @@ def w_rec(p=0):
     print("</ul></pre>")
 
 def do_edit(p='', e_m=''):
-    if form.getvalue('sb'):
+    if wt.get_form('sb'):
         w_publish()
+    elif wt.get_form('name') and \
+         wt.get_form('name') != 'viagra':
+        print("hi spambot")
+    elif wt.get_form('email'):
+        print("bye")
     elif p:
         print("<hr>")
         page_loc = w_conf['pages'] + p + ".txt"
@@ -272,15 +236,15 @@ def do_edit(p='', e_m=''):
                 by = art[1].split(" ")
                 art = "\n".join(art[2:]).replace("&#39;", "'")\
                                         .replace("&gt;", ">")
-            print("last edited at")
-            d_string = '%Y-%m-%d [%a] %H:%M'
-            by[0] = time.localtime(int(by[0]))
-            by[0] = time.strftime(d_string, by[0])
-            print(by[0], "by", by[1], "<br>")
-        if form.getvalue('article'):
-            art = form.getvalue('article').replace("&#39;", "'").replace("&gt;", ">")
-        if form.getvalue('n'):
-            p_name = cgi.escape(form.getvalue('n')).strip()
+            by[0] = wt.fancy_time(int(by[0]), "human")
+            print("last edited", by[0], "by", by[1], "<br>")
+        if wt.get_form('article'):
+            art = wt.get_form('article')\
+                    .replace("&#39;", "'")\
+                    .replace("&gt;", ">")\
+                    .replace(u"\uFFFD", "?")
+        if wt.get_form('n'):
+            p_name = wt.get_form('n')
             if not p_name[0].isalpha() or p_name == 'Anonymous':
                 p_name2 = 'AnonymousUser'
             else:
@@ -288,15 +252,13 @@ def do_edit(p='', e_m=''):
         else:
             p_name = 'Anonymous'
             p_name2 = 'AnonymousUser'
+        e_utime = wt.fancy_time(None, "unix")
+        e_ltime = wt.fancy_time(None, "human")
         print("// You are:", p_name2)
-        print("// Time:")
-        d_string = '%Y-%m-%d [%a] %H:%M'
-        e_utime = int(time.time())
-        e_ltime = time.localtime(e_utime)
-        e_ltime = time.strftime(d_string, e_ltime)
-        print(e_ltime)
-        p_art = cgi.escape(art)
-        p_art = p_art.replace('&amp;', '&')
+        print("// Time:", e_ltime)
+
+        p_art = art.replace(u"\uFFFD", "?").replace("&amp;", "&")
+
         w_links = []
         w_links2 = []
         for m in re.finditer(r"\b([A-Z][a-z]+){2,}\b", p_art):
@@ -343,7 +305,7 @@ def do_edit(p='', e_m=''):
 <input type='hidden' name='m' value='{5}'>
 <input type='hidden' name='article' value='{3}'>
 <input type='hidden' name='wl' value='{4}'>
-""".format(e_utime, p, p_name, p_art, w_links, e_m))
+""".format(e_utime, p, p_name, p_art.replace(u"\uFFFD", "?"), w_links, e_m))
         print("</form></h3>")
         print(markdown(p_art2))
         print("<hr>")
@@ -354,7 +316,7 @@ def do_edit(p='', e_m=''):
 
             return
 
-def w_links(p=''):
+def w_link(p=''):
     if not p:
         links = sorted(os.listdir(w_conf['pages']))
         for link in links:
