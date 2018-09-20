@@ -246,7 +246,8 @@ def do_edit(p='', e_m=''):
                 art = "\n".join(art[2:]).replace("&#39;", "'")\
                                         .replace("&gt;", ">")
 #            by[0] = wt.fancy_time(int(by[0]), "human")
-            print("last edited", by[0], "by", by[1], "<br>")
+            print("last edited", wt.fancy_time(int(by[0]), "human"),
+                  "by", by[1], "<br>")
         if wt.get_form('article'):
             art = wt.get_form('article')\
                     .replace("&#39;", "'")\
