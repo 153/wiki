@@ -29,8 +29,17 @@ def main():
     cgi_modes = ["view", "hist", "link", "rec", "edit", "create"]
     do_mode = wt.get_form('m')
     if not do_mode or do_mode not in cgi_modes:
-        w_view("FrontPage")
-        return
+        w_page = wt.raw_query().replace("%20", " ")
+        w_page = w_page.replace('.', '').replace('/', '').strip()
+        if not os.path.isfile("./pages/" + w_page + ".txt"):
+            w_view("FrontPage")
+            return
+        elif "=" in w_page:
+            pass
+        else:
+            print("<a href='.'>&lt; &lt; home</a>")
+            w_view(w_page)
+            return
     w_page = wt.get_form('p')
     if w_page:
         w_page = w_page.replace('.', '').replace('/', '').strip()\
@@ -38,7 +47,7 @@ def main():
     if w_page not in ["FrontPage", "None", None]:
         print("<a href='.'>&lt; &lt; home</a>")
         if do_mode not in ["view", "create"]:
-            print("| <a href='.?m=view;p={0}'>&lt; back</a>".format(w_page))
+            print("| <a href='.?{0}'>&lt; back</a>".format(w_page))
     elif do_mode in ["link", "hist", "create", "rec"]:
         print("<a href='.'>&lt; &lt; home</a>") #.format(w_conf['url']))
         
@@ -76,7 +85,7 @@ def w_view(p=''):
             else:
                 n_links.append(m)
     for link in set(list(w_links)):
-        links2 = "<a style='color: #284' href='?m=view;p=" + link + "'>" + link + "</a>"
+        links2 = "<a style='color: #284' href='?" + link + "'>" + link + "</a>"
         if "[[" and "]]" in links2:
             links2 = links2.replace("[[", "").replace("]]", "")
         w_body = w_body.replace(link, links2)
@@ -111,8 +120,8 @@ def w_hist(p='', np=0):
             wc = len(" ".join(page[2:]).split(" "))
             page = page[1].split(' ')
             d_string = '%y.%m.%d %H:%M'
-            page[0] = time.localtime(int(page[0]))
-            page[0] = time.strftime(d_string, page[0])
+#            page[0] = time.localtime(int(page[0]))
+#            page[0] = time.strftime(d_string, page[0])
             hists.append([link, page, wc])
     if np is 1:
         return str(p+'.txt.'+ str(len(hists)))
@@ -131,7 +140,7 @@ def w_hist(p='', np=0):
         else:
             nwc = "+0"
         lwc = int(i[2])
-        print("<br> @", i[1][0], "by", i[1][1])
+        print("<br> @", wt.fancy_time(i[1][0], "human"), "by", i[1][1])
         print("["+str(lwc)+"w // "+nwc+"w]")
 
 def w_create(p=''):
@@ -184,7 +193,7 @@ def w_publish(p='', n='', sb='', art=''):
         link_list = sorted(link_list)
         print("<br>Redirecting you back in five seconds...")
         print("<meta http-equiv='refresh' content='5; ", \
-              "url=?m=view;p={0}'>".format(p))
+              "url=?{0}'>".format(p))
         w_links.seek(0)
         w_links.write("\n".join(link_list))
         w_links.truncate()
@@ -212,7 +221,7 @@ def w_rec(p=0):
     for n, ip in enumerate(edits):
         ip[1] = time.localtime(int(ip[1]))
         ip[1] = time.strftime('%y.%m.%d %H:%M', ip[1])
-        print("<li>[{1}]: <a href='?m=view;p={0}'>{0}</a>, {2}".format(*ip))
+        print("<li>[{1}]: <a href='?{0}'>{0}</a>, {2}".format(*ip))
     print("</ul></pre>")
 
 def do_edit(p='', e_m=''):
@@ -236,7 +245,7 @@ def do_edit(p='', e_m=''):
                 by = art[1].split(" ")
                 art = "\n".join(art[2:]).replace("&#39;", "'")\
                                         .replace("&gt;", ">")
-            by[0] = wt.fancy_time(int(by[0]), "human")
+#            by[0] = wt.fancy_time(int(by[0]), "human")
             print("last edited", by[0], "by", by[1], "<br>")
         if wt.get_form('article'):
             art = wt.get_form('article')\
@@ -278,7 +287,7 @@ def do_edit(p='', e_m=''):
         w_links2 = list(set(w_links2))
         p_art2 = p_art.replace('&gt;', '>')
         for link in w_links:
-            link2 = "<a style='color:#284' href='?m=view;p=" + link + "'>" + link + "</a>"
+            link2 = "<a style='color:#284' href='?" + link + "'>" + link + "</a>"
             if "[[" and "]]" in link2:
                 link2 = link2.replace("[[", "").replace("]]", "")
             p_art2 = p_art2.replace(link, link2)
@@ -325,10 +334,10 @@ def w_link(p=''):
             links.remove(link)
         links.remove('404.txt')
         links.remove('links.txt')
-        print("<hr>All pages on <a href='?m=view;p=ThisWiki'>ThisWiki</a>:<ol>")
+        print("<hr>All pages on <a href='?ThisWiki'>ThisWiki</a>:<ol>")
         for link in links:
             if link[-4:] == '.txt':
-                print("<li><a href='?m=view;p=" + link[:-4] +"'>", link[:-4], "</a>")
+                print("<li><a href='?" + link[:-4] +"'>", link[:-4], "</a>")
         print("</ol>")
     with open(w_conf['links'], 'r') as link_list:
         for link in link_list:
@@ -338,7 +347,7 @@ def w_link(p=''):
             else:
                 print("<hr>Pages that link here: <ul>")
                 for p in sorted(link[1].split(" ")):
-                    print("<li><a href='?m=view;p=" + p + "'>", \
+                    print("<li><a href='?" + p + "'>", \
                           p, "</a>")
                 break
     return
