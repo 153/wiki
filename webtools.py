@@ -25,6 +25,10 @@ def get_form(val):
     else:
         return ''
 
+def raw_query():
+    qstr = os.environ["QUERY_STRING"]
+    return qstr
+    
 def put_form(ty='', na='', va='', re=''):
     inps = [ty, na, va]
     if ty != "textarea":
